@@ -1,0 +1,18 @@
+﻿<!-- Purpose: Host the Kimi tool-calling agent using the existing .NET runtime pins. -->
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <UserSecretsId>36155164-f23f-4571-b9ff-aa9915e23aa1</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Agents.AI.Foundry.Hosting" Version="1.27.0-preview.261030.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\shared\DemoSettings.cs" Link="DemoSettings.cs" />
+    <Compile Include="..\03-foundry-hosted-agent\DemoTools.cs" Link="DemoTools.cs" />
+    <None Include="..\shared\demo-settings.local.json" Link="demo-settings.local.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Never" Condition="Exists('..\shared\demo-settings.local.json')" />
+  </ItemGroup>
+</Project>

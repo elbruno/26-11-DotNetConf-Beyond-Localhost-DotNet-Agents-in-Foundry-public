@@ -1,0 +1,25 @@
+# Purpose: Describe the hosted demo's code runtime and Responses v2 protocol.
+# Local use loads the saved non-secret demo settings automatically.
+# Deployment remains separate from the setup script.
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+name: beyond-localhost
+services:
+  hello-agent:
+    host: azure.ai.agent
+    project: .
+    language: csharp
+    kind: hosted
+    name: hello-agent
+    startupCommand: dotnet run --no-launch-profile --project HostedAgent.csproj
+    codeConfiguration:
+      dependencyResolution: bundled
+      runtime: dotnet_10
+      entryPoint: HostedAgent.dll
+    protocols:
+      - protocol: responses
+        version: 2.0.0
+    env:
+      FOUNDRY_PROJECT_ENDPOINT: ${FOUNDRY_PROJECT_ENDPOINT}
+      AZURE_AI_MODEL_DEPLOYMENT_NAME: ${AZURE_AI_MODEL_DEPLOYMENT_NAME}
+infra:
+  provider: microsoft.foundry

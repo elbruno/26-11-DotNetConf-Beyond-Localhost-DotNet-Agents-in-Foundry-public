@@ -1,0 +1,22 @@
+# Purpose: Deploy only the new Kimi agent into an existing authorized project.
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+name: beyond-localhost-kimi
+services:
+  netconf-kimi-tools:
+    host: azure.ai.agent
+    project: .
+    language: csharp
+    kind: hosted
+    name: netconf-kimi-tools
+    startupCommand: dotnet run --no-launch-profile --project KimiAgent.csproj
+    codeConfiguration:
+      dependencyResolution: bundled
+      runtime: dotnet_10
+      entryPoint: KimiAgent.dll
+    protocols:
+      - protocol: responses
+        version: 2.0.0
+    env:
+      FOUNDRY_PROJECT_ENDPOINT: ${FOUNDRY_PROJECT_ENDPOINT}
+infra:
+  provider: microsoft.foundry
