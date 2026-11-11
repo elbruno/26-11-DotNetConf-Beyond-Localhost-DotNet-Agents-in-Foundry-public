@@ -15,7 +15,9 @@ The snapshot includes the shared sources, project files, deployment manifests, a
 
 ## Slides
 
-The final session-slides PDF is forthcoming and is not included; it has not been approved.
+[Download the v08 audience slide PDF](beyond-localhost-dotnet-agents-in-foundry-v08.pdf).
+
+This is the user-confirmed final v08 PDF. The editable PowerPoint file and speaker notes are not included.
 
 ## License
 
